@@ -1,0 +1,37 @@
+{
+  "expo": {
+    "name": "mobile",
+    "slug": "mobile",
+    "version": "1.0.0",
+    "extra": {
+      "firebase": {
+        "apiKey": "AIzaSyBf0zjvhN1d2EgVlFZPudhU_-36hS_J_Q4",
+        "authDomain": "taskmanagement1-aa29b.firebaseapp.com",
+        "projectId": "taskmanagement1-aa29b",
+        "storageBucket": "taskmanagement1-aa29b.firebasestorage.app",
+        "messagingSenderId": "245585992850",
+        "appId": "1:245585992850:web:2d8732a73a7443f1c5da4b"
+      }
+    },
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}

@@ -1,0 +1,45 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+
+jobs:
+  build-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Use Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        cache: 'npm'
+
+    - name: Install dependencies (Web)
+      run: |
+        cd web
+        npm ci
+
+    - name: Typecheck (Web)
+      run: |
+        cd web
+        npx tsc --noEmit
+
+    - name: Lint (Web)
+      run: |
+        cd web
+        npm run lint
+
+    - name: Install dependencies (Mobile)
+      run: |
+        cd mobile
+        npm ci
+
+    - name: Typecheck (Mobile)
+      run: |
+        cd mobile
+        npx tsc --noEmit

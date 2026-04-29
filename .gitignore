@@ -1,0 +1,41 @@
+# dependencies
+node_modules/
+**/node_modules/
+
+# next.js
+.next/
+**/.next/
+out/
+dist/
+
+# local runtime data (sqlite db + uploads)
+web/.data/
+web/main.db
+web/public/uploads/
+.data/
+
+# local env files
+mobile/.env
+
+# expo
+.expo/
+**/.expo/
+
+.DS_Store
+
+.env
+.env.local
+.env.*
+
+*.log
+
+# Expo
+*.jks
+*.keystore
+
+# IDE
+.vscode/
+.idea/
+
+# binaries / installers
+*.exe

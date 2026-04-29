@@ -1,0 +1,23 @@
+﻿.next/dev/types/validator.ts(297,31): error TS2344: Type 'typeof import("C:/Users/Uriel/Downloads/task-management1-master/task-management1-master/web/src/app/api/tasks/[id]/share/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/tasks/[id]/share">'.
+  Types of property 'POST' are incompatible.
+    Type '(req: NextRequest, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ message: string; }> | NextResponse<{ success: boolean; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+.next/types/validator.ts(297,31): error TS2344: Type 'typeof import("C:/Users/Uriel/Downloads/task-management1-master/task-management1-master/web/src/app/api/tasks/[id]/share/route")' does not satisfy the constraint 'RouteHandlerConfig<"/api/tasks/[id]/share">'.
+  Types of property 'POST' are incompatible.
+    Type '(req: NextRequest, { params }: { params: { id: string; }; }) => Promise<NextResponse<{ error: string; }> | NextResponse<{ message: string; }> | NextResponse<{ success: boolean; }>>' is not assignable to type '(request: NextRequest, context: { params: Promise<{ id: string; }>; }) => void | Response | Promise<void | Response>'.
+      Types of parameters '__1' and 'context' are incompatible.
+        Type '{ params: Promise<{ id: string; }>; }' is not assignable to type '{ params: { id: string; }; }'.
+          Types of property 'params' are incompatible.
+            Property 'id' is missing in type 'Promise<{ id: string; }>' but required in type '{ id: string; }'.
+src/app/app/page.tsx(772,17): error TS2322: Type '{ tasks: TaskItem[]; onTaskClick: (t: TaskItem) => void; onShareTask: (id: any) => void; }' is not assignable to type 'IntrinsicAttributes & EnterpriseTaskTableProps'.
+  Property 'onShareTask' does not exist on type 'IntrinsicAttributes & EnterpriseTaskTableProps'.
+src/app/app/page.tsx(772,31): error TS7006: Parameter 'id' implicitly has an 'any' type.
+src/app/app/page.tsx(859,11): error TS2322: Type '(emails: any) => void' is not assignable to type '() => void'.
+  Target signature provides too few arguments. Expected 1 or more, but got 0.
+src/app/app/page.tsx(859,22): error TS7006: Parameter 'emails' implicitly has an 'any' type.
+src/components/EnterpriseTaskTable.tsx(69,48): error TS2551: Property 'assignedToEmail' does not exist on type 'TaskItem'. Did you mean 'assignedTo'?
+src/server/db.ts(3,22): error TS7016: Could not find a declaration file for module 'better-sqlite3'. 'C:/Users/Uriel/Downloads/task-management1-master/task-management1-master/web/node_modules/better-sqlite3/lib/index.js' implicitly has an 'any' type.
+  Try `npm i --save-dev @types/better-sqlite3` if it exists or add a new declaration (.d.ts) file containing `declare module 'better-sqlite3';`

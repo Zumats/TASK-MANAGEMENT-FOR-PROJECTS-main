@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "firebase": "^12.9.0",
+    "react-native-gesture-handler": "^2.30.0"
+  }
+}

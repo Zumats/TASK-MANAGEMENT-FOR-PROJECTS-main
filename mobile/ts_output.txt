@@ -1,0 +1,8 @@
+src/screens/AdminScreen.tsx(2713,3): error TS1117: An object literal cannot have multiple properties with the same name.
+src/screens/RegisterScreen.tsx(101,13): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(props: TextInputProps): TextInput', gave the following error.
+    Type '{ style: ({ flex: number; color: string; fontSize: number; height: "100%"; } | { paddingRight: number; })[]; secureTextEntry: boolean; placeholder: string; placeholderTextColor: string; value: string; onChangeText: (text: string) => void; minLength: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<TextInput> & Readonly<TextInputProps>'.
+      Property 'minLength' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<TextInput> & Readonly<TextInputProps>'.
+  Overload 2 of 2, '(props: TextInputProps, context: any): TextInput', gave the following error.
+    Type '{ style: ({ flex: number; color: string; fontSize: number; height: "100%"; } | { paddingRight: number; })[]; secureTextEntry: boolean; placeholder: string; placeholderTextColor: string; value: string; onChangeText: (text: string) => void; minLength: number; }' is not assignable to type 'IntrinsicAttributes & IntrinsicClassAttributes<TextInput> & Readonly<TextInputProps>'.
+      Property 'minLength' does not exist on type 'IntrinsicAttributes & IntrinsicClassAttributes<TextInput> & Readonly<TextInputProps>'.

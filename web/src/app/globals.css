@@ -1,0 +1,292 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --scrollbar-track: #101014;
+  --scrollbar-thumb: #2a2a35;
+  --scrollbar-thumb-hover: #3f3f4e;
+}
+
+:root[data-theme="light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --scrollbar-track: rgba(15, 23, 42, 0.06);
+  --scrollbar-thumb: rgba(15, 23, 42, 0.25);
+  --scrollbar-thumb-hover: rgba(15, 23, 42, 0.35);
+}
+
+:root[data-theme="light"] body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    --scrollbar-track: rgba(15, 23, 42, 0.06);
+    --scrollbar-thumb: rgba(15, 23, 42, 0.25);
+    --scrollbar-thumb-hover: rgba(15, 23, 42, 0.35);
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 5px;
+  border: 2px solid var(--scrollbar-track);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+
+/* User "My Tasks" — light theme (task cards stay dark via Tailwind until overridden here) */
+html[data-theme="light"] .umt-task-card.umt-task-card--blocked {
+  background-image: linear-gradient(to right, #fffbeb, #ffedd5) !important;
+  border-color: rgba(234, 88, 12, 0.35) !important;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08) !important;
+}
+html[data-theme="light"] .umt-task-card:not(.umt-task-card--blocked) {
+  background-image: linear-gradient(to right, #ffffff, #f1f5f9) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.08) !important;
+}
+html[data-theme="light"] .umt-task-card:not(.umt-task-card--blocked):hover {
+  background-image: linear-gradient(to right, #f8fafc, #e2e8f0) !important;
+}
+
+/* ─── Light mode: main work area (admin app, profile content, work-packages) ─── */
+html[data-theme="light"] main {
+  color: #0f172a;
+}
+
+html[data-theme="light"] main [class*="bg-black/40"] {
+  background-color: #f1f5f9 !important;
+}
+html[data-theme="light"] main [class*="bg-black/30"] {
+  background-color: #e2e8f0 !important;
+}
+html[data-theme="light"] main [class*="bg-black/20"] {
+  background-color: #f8fafc !important;
+}
+html[data-theme="light"] main [class*="bg-black/10"] {
+  background-color: #fafafa !important;
+}
+
+html[data-theme="light"] main [class*="bg-[#0b0b14]"],
+html[data-theme="light"] main [class*="bg-[#0d0d1a]"],
+html[data-theme="light"] main [class*="bg-[#161625]"] {
+  background-color: #f1f5f9 !important;
+}
+
+/* text-white + opacity utilities → dark text (exact tokens; avoid /5 vs /50 substring bugs) */
+html[data-theme="light"] main [class~="text-white/100"] {
+  color: #0f172a !important;
+}
+html[data-theme="light"] main [class~="text-white/95"] {
+  color: rgba(15, 23, 42, 0.95) !important;
+}
+html[data-theme="light"] main [class~="text-white/90"] {
+  color: rgba(15, 23, 42, 0.92) !important;
+}
+html[data-theme="light"] main [class~="text-white/85"] {
+  color: rgba(15, 23, 42, 0.88) !important;
+}
+html[data-theme="light"] main [class~="text-white/80"] {
+  color: rgba(15, 23, 42, 0.82) !important;
+}
+html[data-theme="light"] main [class~="text-white/75"] {
+  color: rgba(15, 23, 42, 0.78) !important;
+}
+html[data-theme="light"] main [class~="text-white/70"] {
+  color: rgba(15, 23, 42, 0.65) !important;
+}
+html[data-theme="light"] main [class~="text-white/60"] {
+  color: rgba(15, 23, 42, 0.55) !important;
+}
+html[data-theme="light"] main [class~="text-white/55"] {
+  color: rgba(15, 23, 42, 0.52) !important;
+}
+html[data-theme="light"] main [class~="text-white/50"] {
+  color: rgba(15, 23, 42, 0.48) !important;
+}
+html[data-theme="light"] main [class~="text-white/45"] {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+html[data-theme="light"] main [class~="text-white/40"] {
+  color: rgba(15, 23, 42, 0.42) !important;
+}
+html[data-theme="light"] main [class~="text-white/35"] {
+  color: rgba(15, 23, 42, 0.4) !important;
+}
+html[data-theme="light"] main [class~="text-white/30"] {
+  color: rgba(15, 23, 42, 0.38) !important;
+}
+html[data-theme="light"] main [class~="text-white/20"] {
+  color: rgba(15, 23, 42, 0.3) !important;
+}
+html[data-theme="light"] main [class~="text-white/10"] {
+  color: rgba(15, 23, 42, 0.22) !important;
+}
+
+html[data-theme="light"] main [class*="placeholder:text-white"]::placeholder {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+
+html[data-theme="light"] main [class~="text-white"] {
+  color: #0f172a !important;
+}
+
+/* Gradient chips / avatars: keep white glyph on saturated gradients */
+html[data-theme="light"] main [class*="bg-gradient-to-br"][class*="text-white"] {
+  color: #ffffff !important;
+}
+
+/* Primary solid buttons: restore white label */
+html[data-theme="light"] main [class~="bg-red-500"],
+html[data-theme="light"] main [class~="bg-red-600"],
+html[data-theme="light"] main [class~="bg-blue-500"],
+html[data-theme="light"] main [class~="bg-blue-600"],
+html[data-theme="light"] main [class~="bg-green-500"],
+html[data-theme="light"] main [class~="bg-green-600"],
+html[data-theme="light"] main [class~="bg-emerald-500"],
+html[data-theme="light"] main [class~="bg-emerald-600"],
+html[data-theme="light"] main [class~="bg-amber-500"],
+html[data-theme="light"] main [class~="bg-orange-500"],
+html[data-theme="light"] main [class~="bg-rose-500"],
+html[data-theme="light"] main [class~="bg-rose-600"],
+html[data-theme="light"] main [class~="bg-purple-600"],
+html[data-theme="light"] main [class~="bg-indigo-600"],
+html[data-theme="light"] main [class~="bg-violet-600"],
+html[data-theme="light"] main [class~="bg-fuchsia-600"],
+html[data-theme="light"] main [class~="bg-cyan-600"],
+html[data-theme="light"] main [class~="bg-sky-600"],
+html[data-theme="light"] main [class~="bg-teal-600"],
+html[data-theme="light"] main [class~="bg-pink-600"],
+html[data-theme="light"] main [class~="bg-lime-600"] {
+  color: #ffffff !important;
+}
+
+html[data-theme="light"] main [class~="bg-red-500"] *,
+html[data-theme="light"] main [class~="bg-red-600"] *,
+html[data-theme="light"] main [class~="bg-blue-500"] *,
+html[data-theme="light"] main [class~="bg-blue-600"] *,
+html[data-theme="light"] main [class~="bg-green-500"] *,
+html[data-theme="light"] main [class~="bg-green-600"] *,
+html[data-theme="light"] main [class~="bg-emerald-500"] *,
+html[data-theme="light"] main [class~="bg-emerald-600"] *,
+html[data-theme="light"] main [class~="bg-amber-500"] *,
+html[data-theme="light"] main [class~="bg-orange-500"] *,
+html[data-theme="light"] main [class~="bg-rose-500"] *,
+html[data-theme="light"] main [class~="bg-rose-600"] *,
+html[data-theme="light"] main [class~="bg-purple-600"] *,
+html[data-theme="light"] main [class~="bg-indigo-600"] *,
+html[data-theme="light"] main [class~="bg-violet-600"] *,
+html[data-theme="light"] main [class~="bg-fuchsia-600"] *,
+html[data-theme="light"] main [class~="bg-cyan-600"] *,
+html[data-theme="light"] main [class~="bg-sky-600"] *,
+html[data-theme="light"] main [class~="bg-teal-600"] *,
+html[data-theme="light"] main [class~="bg-pink-600"] *,
+html[data-theme="light"] main [class~="bg-lime-600"] * {
+  color: inherit !important;
+}
+
+/* Portaled modals (outside <main>): dark panels become light via AppLayout hex overrides */
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/100"] {
+  color: #0f172a !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/95"] {
+  color: rgba(15, 23, 42, 0.95) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/90"] {
+  color: rgba(15, 23, 42, 0.92) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/85"] {
+  color: rgba(15, 23, 42, 0.88) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/80"] {
+  color: rgba(15, 23, 42, 0.82) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/75"] {
+  color: rgba(15, 23, 42, 0.78) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/70"] {
+  color: rgba(15, 23, 42, 0.65) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/60"] {
+  color: rgba(15, 23, 42, 0.55) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/55"] {
+  color: rgba(15, 23, 42, 0.52) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/50"] {
+  color: rgba(15, 23, 42, 0.48) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/45"] {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/40"] {
+  color: rgba(15, 23, 42, 0.42) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/35"] {
+  color: rgba(15, 23, 42, 0.4) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/30"] {
+  color: rgba(15, 23, 42, 0.38) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/20"] {
+  color: rgba(15, 23, 42, 0.3) !important;
+}
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white/10"] {
+  color: rgba(15, 23, 42, 0.22) !important;
+}
+
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="text-white"] {
+  color: #0f172a !important;
+}
+
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class*="placeholder:text-white"]::placeholder {
+  color: rgba(15, 23, 42, 0.45) !important;
+}
+
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-blue-500"],
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-blue-600"],
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-green-500"],
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-green-600"],
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-red-500"],
+html[data-theme="light"] div[class*="fixed"][class*="inset-0"]:not([class*="9999"]) [class~="bg-red-600"] {
+  color: #ffffff !important;
+}
+

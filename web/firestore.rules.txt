@@ -1,0 +1,90 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    function isManager() {
+      return signedIn()
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "manager";
+    }
+
+    function myDept() {
+      return signedIn()
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.department
+        : null;
+    }
+
+    // Needed for admin/manager accounts list queries.
+    match /users {
+      allow list: if isAdmin() || isManager();
+      allow read: if isAdmin() || isManager();
+    }
+
+    match /users/{uid} {
+      allow create: if signedIn() && request.auth.uid == uid;
+
+      // User can read/update their own doc. Admin can read any user doc.
+      allow read: if signedIn() && (request.auth.uid == uid || isAdmin() || isManager());
+      // Users can update their own profile fields (not role). Admin can update role only.
+      allow update: if signedIn() && request.auth.uid == uid && request.resource.data.role == resource.data.role;
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["role", "updatedAt"]);
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["department", "updatedAt"]);
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["role"]);
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["department"]);
+
+      // Admin can set department and role for org setup.
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["role", "department", "updatedAt"]);
+      allow update: if isAdmin() && request.resource.data.diff(resource.data).changedKeys().hasOnly(["role", "department"]);
+
+      // Firestore user-doc deletion (does NOT delete Firebase Auth user)
+      allow delete: if isAdmin();
+
+      match /notifications/{notificationId} {
+        allow create: if signedIn() && (isAdmin() || request.auth.uid == uid);
+        allow read: if signedIn() && (isAdmin() || request.auth.uid == uid);
+        allow update: if signedIn() && (isAdmin() || request.auth.uid == uid);
+        allow delete: if signedIn() && (isAdmin() || request.auth.uid == uid);
+      }
+    }
+
+    match /tasks/{taskId} {
+      allow create: if isAdmin() || isManager();
+
+      // Needed for tasks list queries.
+      allow list: if signedIn();
+
+      allow read: if signedIn();
+
+      // Assigned user can update status. Admin can update anything.
+      allow update: if signedIn();
+
+      allow delete: if isAdmin();
+
+      match /comments/{commentId} {
+        allow create: if signedIn() && (
+          isAdmin() ||
+          (isManager() && get(/databases/$(database)/documents/tasks/$(taskId)).data.department == myDept()) ||
+          get(/databases/$(database)/documents/tasks/$(taskId)).data.assignedTo == request.auth.uid ||
+          get(/databases/$(database)/documents/tasks/$(taskId)).data.assignedBy == request.auth.uid
+        );
+
+        allow read: if signedIn() && (
+          isAdmin() ||
+          (isManager() && get(/databases/$(database)/documents/tasks/$(taskId)).data.department == myDept()) ||
+          get(/databases/$(database)/documents/tasks/$(taskId)).data.assignedTo == request.auth.uid ||
+          get(/databases/$(database)/documents/tasks/$(taskId)).data.assignedBy == request.auth.uid
+        );
+
+        allow update, delete: if false;
+      }
+    }
+  }
+}
